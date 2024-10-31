@@ -152,7 +152,7 @@ class Scoring:
                     self.total += 10
 
                 else:
-                    self.total += (bowling_dict[f"Frame {frame_turns}"][1] + bowling_dict[f"Frame {frame_turns}"][2])
+                    self.total += (10 + bowling_dict[f"Frame {frame_turns}"][2])
 
         else:
             if bowling_dict[f"Frame {frame_turns}"][1] == "/":
