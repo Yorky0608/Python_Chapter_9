@@ -62,6 +62,9 @@ class Scoring:
                 print("\t\tStrike")
                 bowling_dict[f"Frame {frame_turns}"] = ["X", "X", "X"]
 
+            else:
+                bowling_dict[f"Frame {frame_turns}"] = ["X", "X", bowl_3]
+
         elif count_s == 1:
             if self.check_strike(bowl_3):
                 print("\t\tStrike")
@@ -135,6 +138,24 @@ class Scoring:
 
 
     def totals_10(self, bowling_dict, frame_turns):
+        if bowling_dict[f"Frame {frame_turns - 1}"][1] == "X":
+            if bowling_dict[f"Frame {frame_turns}"][1] == "X":
+                self.total += 20
+            else:
+                if bowling_dict[f"Frame {frame_turns}"][1] == "/":
+                    self.total += 10
+                else:
+                    self.total += (
+                            bowling_dict[f"Frame {frame_turns}"][0] + bowling_dict[f"Frame {frame_turns}"][1]
+                    )
+
+        if bowling_dict[f"Frame {frame_turns - 1}"][1] == "/":
+            if bowling_dict[f"Frame {frame_turns}"][1] == "X":
+                self.total += 10
+
+            else:
+                self.total += bowling_dict[f"Frame {frame_turns}"][0]
+
         if bowling_dict[f"Frame {frame_turns}"][0] == "X":
             self.total += 10
 
@@ -152,7 +173,14 @@ class Scoring:
                     self.total += 10
 
                 else:
-                    self.total += (10 + bowling_dict[f"Frame {frame_turns}"][2])
+                    print(bowling_dict[f"Frame {frame_turns}"][1])
+                    self.total += bowling_dict[f"Frame {frame_turns}"][1]
+
+                    if bowling_dict[f"Frame {frame_turns}"][2] == "X":
+                        self.total += 10
+
+                    else:
+                        self.total += bowling_dict[f"Frame {frame_turns}"][2]
 
         else:
             if bowling_dict[f"Frame {frame_turns}"][1] == "/":
