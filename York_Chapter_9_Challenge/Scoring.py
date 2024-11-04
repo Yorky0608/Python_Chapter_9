@@ -139,18 +139,27 @@ class Scoring:
 
     def totals_10(self, bowling_dict, frame_turns):
         if bowling_dict[f"Frame {frame_turns - 1}"][1] == "X":
-            if bowling_dict[f"Frame {frame_turns}"][1] == "X":
-                self.total += 20
+
+            if bowling_dict[f"Frame {frame_turns}"][0] == "X":
+                self.total += 10
+
+                if bowling_dict[f"Frame {frame_turns}"][1] == "X":
+                    self.total += 10
+
+                else:
+                    self.total += bowling_dict[f"Frame {frame_turns}"][1]
+
             else:
                 if bowling_dict[f"Frame {frame_turns}"][1] == "/":
                     self.total += 10
+
                 else:
                     self.total += (
                             bowling_dict[f"Frame {frame_turns}"][0] + bowling_dict[f"Frame {frame_turns}"][1]
                     )
 
         if bowling_dict[f"Frame {frame_turns - 1}"][1] == "/":
-            if bowling_dict[f"Frame {frame_turns}"][1] == "X":
+            if bowling_dict[f"Frame {frame_turns}"][0] == "X":
                 self.total += 10
 
             else:
