@@ -129,7 +129,26 @@ class Game:
         print(f"\t{self.bowling_dict}")
 
 
-
 a = Game()
+highest = 0
 
-a.start_game()
+while True:
+    a.start_game()
+    if a.score.total > highest:
+        highest = a.score.total
+
+    if highest == 300:
+        break
+
+    a.bowl_1 = 0
+    a.bowl_2 = 0
+    a.bowl_3 = 0
+    a.pins = 10
+    a.frame_turns = 1
+    a.bowling_dict = {"Frame 1": [], "Frame 2": [], "Frame 3": [], "Frame 4": [], "Frame 5": [], "Frame 6": [],
+                         "Frame 7": [], "Frame 8": [], "Frame 9": [], "Frame 10": []}
+    a.score = Scoring()
+    a.count_s = 0
+    a.count_sp = 0
+    a.score.total = 0
+    print(highest)
