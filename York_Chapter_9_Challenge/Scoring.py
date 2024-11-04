@@ -117,7 +117,7 @@ class Scoring:
         if frame_turns != 1:
             if bowling_dict[f"Frame {frame_turns-1}"][1] == "X":
                 if bowling_dict[f"Frame {frame_turns}"][1] == "X":
-                    self.total += 10
+                    self.total += 20
                 else:
                     if bowling_dict[f"Frame {frame_turns}"][1] == "/":
                         self.total += 10
